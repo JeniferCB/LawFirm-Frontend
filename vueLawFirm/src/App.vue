@@ -41,6 +41,7 @@ export default {
 <style scoped>
 .app {
     height: 95vh ;
+    font-size: calc(10px + 1vw);
 }
 .body  {
     overflow-y: scroll;

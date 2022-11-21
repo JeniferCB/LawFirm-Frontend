@@ -49,14 +49,14 @@ export default {
 .navigation {
     display: flex;
     width: 100%;
-    height: 7%;
+    height: calc(7% + 1vw);
     background-color:rgb(10, 42, 72);
     justify-content: space-between;
     align-items: center;
 }
 
 .title1 {
-    font-size: 20px;
+    font-size: calc(20px + 1vh);
 
     font-style: normal;
     font-weight: bold;
@@ -66,14 +66,16 @@ export default {
 }
 
 .btn-primary {
-    height: 100% !important;
+    height: calc(80% + 1vh) !important;
     text-align: center;
     background-color:rgb(15, 65, 112) ;
-    
     color: lightcyan;
 }
 .testlog{
     color:lightcyan;
 
+}
+nav {
+    margin-right: 1%;
 }
 </style>
