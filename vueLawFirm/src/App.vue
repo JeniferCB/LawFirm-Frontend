@@ -43,7 +43,6 @@ export default {
     height: 95vh ;
 }
 .body  {
-    background-color: black;
     overflow-y: scroll;
     height: 92%;
 }

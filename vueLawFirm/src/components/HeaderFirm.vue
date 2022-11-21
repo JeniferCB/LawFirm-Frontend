@@ -7,12 +7,13 @@ import SignupView from '../views/SignupView.vue'
     <div class="navigation">
         <h3 class="title1">LawFirm</h3>
         <nav v-if="!token">
-            <RouterLink class="btn btn-primary" to="/login">Login</RouterLink> |
+            <RouterLink class="btn btn-primary" to="/login" token="uppage">Login</RouterLink> 
+            <span class="testlog"> | </span> 
             <RouterLink class="btn btn-primary" to="/signup">Signup</RouterLink>
         </nav>
         <nav v-else>
-            Welcome {{ email }} -
-            <button @click="logout">Logout</button>
+            <span class="testlog">Welcome {{ email }} - </span> 
+            <button class="btn btn-primary" @click="logout">Logout</button>
         </nav>
     </div>
 </template>
@@ -31,12 +32,16 @@ export default {
             this.token = ''
             localStorage.removeItem('email')
             this.$router.push({ name: 'login' })
+        },
+        uppage(){
+            this.token = localStorage.getItem('token')
+            this.email = localStorage.getItem('email')
         }
     },
-    created() {
+    /*created() {
         this.token = localStorage.getItem('token')
         this.email = localStorage.getItem('email')
-    }
+    }*/
 }
 </script>
 
@@ -66,5 +71,9 @@ export default {
     background-color:rgb(15, 65, 112) ;
     
     color: lightcyan;
+}
+.testlog{
+    color:lightcyan;
+
 }
 </style>
