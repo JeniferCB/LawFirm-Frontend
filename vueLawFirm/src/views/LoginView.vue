@@ -2,16 +2,16 @@
     <div class="format">
         <div class="login">
             <div>
-                <label>EMAIL</label>  
+                <label>EMAIL</label>
                 <input class="email" type="email" v-model="newUser.email" />
             </div>
             <div>
-                <label>PASSWORD</label> 
+                <label>PASSWORD</label>
                 <input class="pass" type="password" @keydown.prevent.enter="loginUser()" v-model="newUser.password" />
             </div>
 
             <div class="button">
-                <button class="btn btn-dark" @click.prevent="loginUser()">LOGIN</button>
+                <RouterLink to='appointments' class="btn btn-dark" @click.prevent="loginUser()">LOGIN</RouterLink>
             </div>
         </div>
     </div>
@@ -34,9 +34,10 @@ export default {
     methods: {
         async loginUser() {
             const response = await API.login(this.newUser)
-            this.$emit('token')
             if (response.error) {
                 alert('wrong username/password')
+            } else {
+                this.emitter.emit("login")
             }
         }
     }
@@ -60,7 +61,8 @@ export default {
     flex-direction: column;
     justify-content: space-around;
 }
-label{
+
+label {
     margin-left: 1.5%;
 }
 
@@ -75,13 +77,14 @@ label{
 }
 
 .btn-dark {
-    width: calc( 20% + 1vw);
-    font-size: calc( 5px + 1vw);
+    width: calc(20% + 1vw);
+    font-size: calc(5px + 1vw);
 
 }
-.button{
-    width:100%;
-    display:flex;
+
+.button {
+    width: 100%;
+    display: flex;
     justify-content: center;
 }
 </style>

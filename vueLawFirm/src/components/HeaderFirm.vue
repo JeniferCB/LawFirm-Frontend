@@ -7,13 +7,13 @@ import SignupView from '../views/SignupView.vue'
     <div class="navigation">
         <h3 class="title1">LawFirm</h3>
         <nav v-if="!token">
-            <RouterLink class="btn btn-primary" to="/login" token="uppage">Login</RouterLink> 
+            <RouterLink class="btn btn-primary" to="login">Login</RouterLink> 
             <span class="testlog"> | </span> 
-            <RouterLink class="btn btn-primary" to="/signup">Signup</RouterLink>
+            <RouterLink class="btn btn-primary" to="signup">Signup</RouterLink>
         </nav>
         <nav v-else>
             <span class="testlog">Welcome {{ email }} - </span> 
-            <button class="btn btn-primary" @click="logout">Logout</button>
+            <RouterLink to="home" class="btn btn-primary" @click="logout">Logout</RouterLink>
         </nav>
     </div>
 </template>
@@ -31,17 +31,19 @@ export default {
             localStorage.removeItem('token')
             this.token = ''
             localStorage.removeItem('email')
-            this.$router.push({ name: 'login' })
+            localStorage.removeItem('rol')
+            localStorage.removeItem('id')
+            this.$router.push({ name: 'home' })
         },
-        uppage(){
+    },
+    created() {
+        // this.token = localStorage.getItem('token')
+        // this.email = localStorage.getItem('email')
+        this.emitter.on("login",() => {
             this.token = localStorage.getItem('token')
             this.email = localStorage.getItem('email')
-        }
-    },
-    /*created() {
-        this.token = localStorage.getItem('token')
-        this.email = localStorage.getItem('email')
-    }*/
+        })
+    }
 }
 </script>
 

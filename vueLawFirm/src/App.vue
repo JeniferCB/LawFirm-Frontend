@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HeaderFirm from './components/HeaderFirm.vue';
 import FooterFirm from './components/FooterFirm.vue';
+
 </script>
 
 <script>

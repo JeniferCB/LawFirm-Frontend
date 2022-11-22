@@ -54,6 +54,8 @@ export default {
             const response = await API.signup(this.newUser)
             if (response.error) {
                 alert('Error creating account')
+            }else{
+                this.emitter.emit("login")
             }
         }
     }

@@ -5,22 +5,48 @@ const API = axios.create({
 })
 
 async function signup(newUser) {
-  const { data: { token, email } } = await API.post('/auth/signup', newUser)
+  const { data: { token, email, rol, id } } = await API.post('/auth/signup', newUser)
   localStorage.setItem('token', token)
   localStorage.setItem('email', email)
+  localStorage.setItem('id', id)
+  localStorage.setItem('rol', rol)
   return token
 }
 
 async function login(newUser) {
-  const { data: { token, email } } = await API.post('/auth/login', newUser)
+  const { data: { token, email, rol, id } } = await API.post('/auth/login', newUser)
   localStorage.setItem('token', token)
   localStorage.setItem('email', email)
+  localStorage.setItem('id', id)
+  localStorage.setItem('rol', rol)
   return token
 }
 
+async function getAllPendingAppointments(){
+  const res = await API.get('/appointments/client', {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+  return res
+}
 
+async function addAppointment(){
+  const res = await API.post('/appointments')
+}
+async function getUsers(){
+  const res = await API.get('/users/list', {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+  return res
+  }
 
 export default {
     signup,
     login,
+    getAllPendingAppointments,
+    getUsers
+
   }
