@@ -31,9 +31,17 @@ async function getAllPendingAppointments(){
   return res
 }
 
-async function addAppointment(){
-  const res = await API.post('/appointments')
+async function addAppointment(appoint){
+  const res = await API.post('/appointments', appoint, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+  return res
 }
+
+
+
 async function getUsers(){
   const res = await API.get('/users/list', {
     headers: {
@@ -47,6 +55,7 @@ export default {
     signup,
     login,
     getAllPendingAppointments,
-    getUsers
+    getUsers,
+    addAppointment
 
   }

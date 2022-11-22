@@ -6,40 +6,39 @@
                     <h5 class="card-title">{{ appo.date }} {{ appo.hour }}</h5>
                     <h5>{{ appo.modality }}</h5>
                     <p class="card-text">{{ appo.message }}</p>
-                    <a href="#" class="btn btn-danger">Cancel</a>
+                    <a href="#" class="btn btn-danger" @click.prevent="">Cancel</a>
                 </div>
             </div>
         </div>
         <div class="container2">
             <label> DATE </label>
-            <input type="date">
+            <input type="date" v-model="list.date">
             <label> HOUR </label>
-            <input type="time" name="time" min="09:00" max="17:00">
+            <input type="time" name="time" min="09:00" max="17:00" v-model="list.hour">
             <label> MODALITY </label>
             <div class="modality">
                 <div>
-                    <input name="modality" type="radio">
+                    <input name="modality" type="radio" value="call" v-model="list.modality">
                     <label> Call</label>
                 </div>
                 <div>
-                    <input name="modality" type="radio">
-                    <label>presencial</label>
+                    <input name="modality" type="radio" value="presence" v-model="list.modality">
+                    <label>Presence</label>
                 </div>
             </div>
             <label> AMBIT </label>
-            <select name="select">
+            <select name="select" v-model="list.ambit">
                 <option selected hidden disabled> Select ambit</option>
-                <option value="Laboral">Laboral</option>
-                <option value="Penal">Penal</option>
-                <option value="Civil">Civil</option>
-                <option value="Administrativo">Administrativo</option>
-                <option value="Fiscal">Fiscal</option>
-                <option value="Procesal">Procesal</option>
-                <option value="Otros">Otros</option>
+                <option value="laboral">Laboral</option>
+                <option value="penal">Penal</option>
+                <option value="civil">Civil</option>
+                <option value="administrativo">Administrativo</option>
+                <option value="fiscal">Fiscal</option>
+                <option value="mercantil">Mercantil</option>
+                <option value="otros">Otros</option>
             </select>
-            {{user}}
             <label> MESSAGE </label>
-            <textarea rows="10" cols="50"> </textarea>
+            <textarea rows="10" cols="50" v-model="list.message"> </textarea>
             <button class="btn btn-dark" @click.prevent="addAppointment()"> ADD APPOINTMENT</button>
         </div>
     </div>
@@ -58,12 +57,12 @@ export default {
                 hour: '',
                 modality: '',
                 ambit: '',
-                client: '',
+                client: localStorage.getItem('id'),
                 lawyer: '',
                 message: '',
                 done: false
             },
-            user: ""
+            user: []
         }
     },
     mounted() {
@@ -75,13 +74,26 @@ export default {
     beforeMount() {
         API.getUsers()
             .then(res => {
-                this.client = localStorage.getItem('id')
                 res.data.forEach(e => {
-                   if (e.role !== 'user') {
-                    this.user = e.id
-                   }
+                    if (e.role !== 'user') {
+                        this.user.push(e._id)
+                    }
                 });
+                let ran = Math.floor(Math.random() * this.user.length)
+                this.list.lawyer = this.user[ran]
             })
+    },
+    methods: {
+        addAppointment() {
+            API.addAppointment(this.list)
+                .then(res => {
+                    console.log(res + "cita creada");
+                    API.getAllPendingAppointments()
+                         .then(res => {
+                             this.appointments = res.data
+                         })
+                })
+        }
     }
 }
 </script>
