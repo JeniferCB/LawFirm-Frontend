@@ -11,7 +11,7 @@
             </div>
 
             <div class="button">
-                <RouterLink to='appointments' class="btn btn-dark" @click.prevent="loginUser()">LOGIN</RouterLink>
+                <button class="btn btn-dark" @click.prevent="loginUser()">LOGIN</button>
             </div>
         </div>
     </div>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import router from '../router';
 import API from '../services/api.js';
 
 export default {
@@ -27,13 +28,21 @@ export default {
         return {
             newUser: {
                 email: '',
-                password: ''
+                password: '',
+                role: ''
             }
         }
     },
     methods: {
         async loginUser() {
             const response = await API.login(this.newUser)
+            if (localStorage.getItem('rol') !== 'user'){
+                this.$router.push({name: 'home'})
+                console.log("hola");
+            }else {
+                router.push('appointments')
+
+            }
             if (response.error) {
                 alert('wrong username/password')
             } else {

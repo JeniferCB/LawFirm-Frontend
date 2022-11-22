@@ -6,7 +6,7 @@
                     <h5 class="card-title">{{ appo.date }} {{ appo.hour }}</h5>
                     <h5>{{ appo.modality }}</h5>
                     <p class="card-text">{{ appo.message }}</p>
-                    <a href="#" class="btn btn-danger" @click.prevent="">Cancel</a>
+                    <a href="#" class="btn btn-danger" @click.prevent="delAppointment(appo._id)">Cancel</a>
                 </div>
             </div>
         </div>
@@ -88,6 +88,16 @@ export default {
             API.addAppointment(this.list)
                 .then(res => {
                     console.log(res + "cita creada");
+                    API.getAllPendingAppointments()
+                         .then(res => {
+                             this.appointments = res.data
+                         })
+                })
+        },
+        delAppointment(id){
+            API.deleteAppointment(id)
+                .then(res => {
+                    console.log(res + "cita cancelada");
                     API.getAllPendingAppointments()
                          .then(res => {
                              this.appointments = res.data

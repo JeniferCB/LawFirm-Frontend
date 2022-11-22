@@ -1,6 +1,6 @@
 <script setup>
-import LoginView from '../views/LoginView.vue'
-import SignupView from '../views/SignupView.vue'
+//import LoginView from '../views/LoginView.vue'
+//import SignupView from '../views/SignupView.vue'
 </script>
 
 <template>

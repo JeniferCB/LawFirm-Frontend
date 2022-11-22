@@ -7,7 +7,7 @@
             </div>
             <div>
                 <label>LASTNAME</label>
-                <input type="text" v-model="newUser.surname" />
+                <input type="text" v-model="newUser.lastname" />
             </div>
             <div>
                 <label>PHONE</label>
@@ -15,7 +15,7 @@
             </div>
             <div>
                 <label>DNI</label>
-                <input type="text" v-model="newUser.identification" />
+                <input type="text" v-model="newUser.dni" />
             </div>
             <div>
                 <label>EMAIL</label>
@@ -26,7 +26,7 @@
                 <input type="password" v-model="newUser.password" />
             </div>
             <div class="register">
-                <button class="btn btn-dark" @click.prevent="signupUser()">SIGNUP</button>
+                <RouterLink to="appointments" class="btn btn-dark" @click.prevent="signupUser()">SIGNUP</RouterLink>
             </div>
         </div>
     </div>
@@ -45,13 +45,14 @@ export default {
                 dni: '',
                 email: '',
                 password: '',
-                rol: 'client'
+                role: 'user'
             }
         }
     },
     methods: {
         async signupUser() {
             const response = await API.signup(this.newUser)
+            console.log(response);
             if (response.error) {
                 alert('Error creating account')
             }else{

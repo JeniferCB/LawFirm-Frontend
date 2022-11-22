@@ -6,6 +6,7 @@ const API = axios.create({
 
 async function signup(newUser) {
   const { data: { token, email, rol, id } } = await API.post('/auth/signup', newUser)
+  
   localStorage.setItem('token', token)
   localStorage.setItem('email', email)
   localStorage.setItem('id', id)
@@ -40,7 +41,14 @@ async function addAppointment(appoint){
   return res
 }
 
-
+async function deleteAppointment(id) {
+  const res = await API.delete(`/appointments/${id}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+  return res
+}
 
 async function getUsers(){
   const res = await API.get('/users/list', {
@@ -56,6 +64,7 @@ export default {
     login,
     getAllPendingAppointments,
     getUsers,
-    addAppointment
+    addAppointment,
+    deleteAppointment
 
   }
