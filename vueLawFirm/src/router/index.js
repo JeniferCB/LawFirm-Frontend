@@ -41,13 +41,12 @@ const router = createRouter({
     }
   ]
 })
-router.beforeEach((to,_,next)=> {
-  console.log(`to: ${to.name} -- Auth Required? ${to.meta.requiresAuth}`)
 
-  const token = localStorage.getItem('token')
-  // Si la ruta a donde quiero ir necesita autenticación
-  // ... y no tengo el token, llévame a la pagina de login
-  if (to.meta.requiresAuth && !token) {
+import { useAuthStore } from '../stores/store'
+
+router.beforeEach((to,_,next)=> {
+  const store = useAuthStore()
+  if (to.meta.requiresAuth && !store.isLoggedIn) {
     next({name: 'login'})
   } else {
     next()

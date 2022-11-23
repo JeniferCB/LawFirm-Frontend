@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        © LawFirm.SL
+        &copy; LawFirm. SL
     </div>
 </template>
 

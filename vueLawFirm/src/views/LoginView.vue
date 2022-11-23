@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import router from '../router';
 import API from '../services/api.js';
+import { useAuthStore } from '../stores/store'
 
 export default {
   data() {
@@ -30,26 +30,27 @@ export default {
         email: '',
         password: '',
         role: ''
-      }
+      },
+      store: useAuthStore()
     }
   },
   methods: {
     async loginUser() {
       const response = await API.login(this.newUser)
-      if (localStorage.getItem('rol') !== 'user') {
-        this.$router.push({ name: 'menu' })
-      } else {
-        router.push('appointments')
-
-      }
       if (response.error) {
         alert('wrong username/password')
       } else {
-        this.emitter.emit("login")
+        this.store.login(response.token, response.email, response.rol, response.id)
+
+        if (this.store.isAdmin) {
+          this.$router.push({ name: 'menu' })
+        } else {
+          this.$router.push('appointments')
+        }
       }
     }
   }
-};
+}
 </script>
   
 <style scoped>

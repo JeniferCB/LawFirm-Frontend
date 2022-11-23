@@ -1,70 +1,76 @@
 import axios from 'axios'
+import { useAuthStore } from '../stores/store'
 
 const API = axios.create({
-    baseURL:'https://api-lawfirm.onrender.com/api'
+  baseURL: 'https://api-lawfirm.onrender.com/api'
 })
 
 async function signup(newUser) {
-  const { data: { token, email, rol, id } } = await API.post('/auth/signup', newUser)
-  
-  localStorage.setItem('token', token)
-  localStorage.setItem('email', email)
-  localStorage.setItem('id', id)
-  localStorage.setItem('rol', rol)
-  return token
+  try {
+    const { data } = await API.post('/auth/signup', newUser)
+    return data
+  } catch (error) {
+    return { error: error.message }
+  }
 }
 
 async function login(newUser) {
-  const { data: { token, email, rol, id } } = await API.post('/auth/login', newUser)
-  localStorage.setItem('token', token)
-  localStorage.setItem('email', email)
-  localStorage.setItem('id', id)
-  localStorage.setItem('rol', rol)
-  return token
+  try {
+    const { data } = await API.post('/auth/login', newUser)
+    return data
+  } catch (error) {
+    return { error: error.message }
+  }
 }
 
-async function getAllPendingAppointments(){
+async function getAllPendingAppointments() {
+  const store = useAuthStore()
   const res = await API.get('/appointments/client', {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
+      Authorization: `Bearer ${store.userToken}`
     }
   })
-  return res
+  return res.data
 }
 
-async function addAppointment(appoint){
-  const res = await API.post('/appointments', appoint, {
+async function addAppointment(appointment) {
+  const store = useAuthStore()
+  const res = await API.post('/appointments', {
+    client: store.userId,
+    ...appointment
+  }, {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
+      Authorization: `Bearer ${store.userToken}`
     }
   })
   return res
 }
 
 async function deleteAppointment(id) {
+  const store = useAuthStore()
   const res = await API.delete(`/appointments/${id}`, {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
+      Authorization: `Bearer ${store.userToken}`
     }
   })
   return res
 }
 
-async function getUsers(){
+async function getUsers() {
+  const store = useAuthStore()
   const res = await API.get('/users/list', {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
+      Authorization: `Bearer ${store.userToken}`
     }
   })
   return res
-  }
+}
 
 export default {
-    signup,
-    login,
-    getAllPendingAppointments,
-    getUsers,
-    addAppointment,
-    deleteAppointment
-
-  }
+  signup,
+  login,
+  getAllPendingAppointments,
+  getUsers,
+  addAppointment,
+  deleteAppointment
+}
