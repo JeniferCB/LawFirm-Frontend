@@ -74,7 +74,7 @@ async function getAllClients() {
   })
   return res.data
 }
-async function getAllAppointments(){
+async function getAllAppointments() {
   const store = useAuthStore()
   const res = await API.get('/appointments', {
     headers: {
@@ -83,7 +83,7 @@ async function getAllAppointments(){
   })
   return res.data
 }
-async function getAllPendingOneClient(id){
+async function getAllPendingOneClient(id) {
   const store = useAuthStore()
   const res = await API.get(`/appointments/${id}`, {
     headers: {
@@ -91,7 +91,16 @@ async function getAllPendingOneClient(id){
     }
   })
   return res.data
+}
 
+async function getAllNotes() {
+  const store = useAuthStore()
+  const res = await API.get('/notes', {
+    headers: {
+      Authorization: `Bearer ${store.userToken}`
+    }
+  })
+  return res.data
 }
 
 export default {
@@ -103,5 +112,6 @@ export default {
   deleteAppointment,
   getAllClients,
   getAllAppointments,
-  getAllPendingOneClient
+  getAllPendingOneClient,
+  getAllNotes
 }

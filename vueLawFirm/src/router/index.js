@@ -6,6 +6,7 @@ import ClientAppointments from '../views/ClientAppointments.vue'
 import LawyerListClient from '../views/LawyerListClient.vue'
 import LayerListAppointment from '../views/LayerListAppointment.vue'
 import LawyerPendingAppointments from '../views/LawyerPendingAppointments.vue'
+import LawyerNotes from '../views/LawyerNotes.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +58,14 @@ const router = createRouter({
         requiresAuth: true
       }
     },
+    {
+      path: '/listnotes',
+      name: 'listnotes',
+      component: LawyerNotes,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 })
 

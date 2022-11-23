@@ -23,11 +23,13 @@
             </button>
         </div>
         <div class="bodymenu">
-            <div v-for="(appo, idx) in appointments" :key="idx" class="card" style="width: 18rem">
-                <div class="card-body">
-                    <h5 class="card-title">{{ appo.date }} {{ appo.hour }}</h5>
-                    <h5>{{ appo.modality }}</h5>
-                    <p class="card-text">{{ appo.message }}</p>
+            <div class="tarjeta">
+                <div class="card" v-for="(note, idx) in notes" :key="idx">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ note.day }}</h5>
+                        <p class="card-text">{{ note.text }}</p>
+                        <h5>{{nameClient(note.client)}}</h5>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,10 +40,9 @@
 import API from '../services/api'
 export default {
     data() {
-
-
         return {
-            appointments: []
+            notes: [],
+            users: [],
         }
     },
     methods: {
@@ -66,11 +67,20 @@ export default {
                     break;
             }
         },
+        nameClient(id) { 
+            let res2 =  this.users.filter((e => e._id === id));
+            return res2[0].name + " " + res2[0].lastname
+        }
     },
     async mounted() {
-        const data = await API.getAllAppointments();
-        this.appointments = data;
+        const data = await API.getAllNotes();
+        const res = await API.getUsers()
+        this.notes = data;
+        this.users = res.data
+        console.log(this.users);
     }
+
+
 }
 </script>
 
@@ -83,7 +93,8 @@ export default {
 
 .bar {
     width: 100%;
-    height: 6%;
+    height: 5%;
+
 }
 
 .bodymenu {
@@ -96,7 +107,6 @@ export default {
     display: flex;
     flex-wrap: wrap;
     margin: 1%;
-    justify-content: center;
 
 }
 
@@ -108,14 +118,6 @@ export default {
 
 .bar button:hover {
     background-color: rgb(54, 109, 109);
-}
-
-.card {
-    margin: 1%;
-    border: 2px solid;
-    border-radius: 30%;
-
-
 }
 
 .bar span {

@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <img src="../assets/justicia.png">
+    <div class="con">
+        <img class="fondo" src="../assets/fondohome.png">
     </div>
 </template>
 
@@ -11,11 +11,12 @@ export default {
 </script>
 
 <style scoped>
-img {
-    height: 90%;
+.fondo {
+    height: 100%;
+    width: 100%;
 }
 
-.container {
+.con {
     display: flex;
     justify-content: center;
     align-items: center;

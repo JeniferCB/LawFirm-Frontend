@@ -69,7 +69,7 @@ nav {
 
 .icon {
   height: 100%;
-  width: 4.5%;
+  width: calc(100px + 1vw);
   margin-left: 1%;
 }
 </style>

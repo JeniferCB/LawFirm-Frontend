@@ -51,7 +51,7 @@ export default {
                     this.$router.push({ name: 'listpending' })
                     break;
                 case "notes":
-                    console.log("notes");
+                    this.$router.push({ name: 'listnotes' })
                     break;
                 case "noteClient":
                     console.log("noteClient");
@@ -75,8 +75,7 @@ export default {
 
 .bar {
     width: 100%;
-    height: 6%;
-    background-color: brown;
+    height: 5%;
 
 }
 
@@ -95,9 +94,13 @@ export default {
 
 .bar button {
     width: 20%;
-
+    background-color: rgb(74, 156, 156);
+    border: none;
 }
 
+.bar button:hover {
+    background-color: rgb(54, 109, 109);
+}
 
 .bar span {
     margin-left: 4%;
