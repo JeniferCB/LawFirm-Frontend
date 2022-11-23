@@ -103,6 +103,17 @@ async function getAllNotes() {
   return res.data
 }
 
+
+async function getAllNotesOneClient(id) {
+  const store = useAuthStore()
+  const res = await API.get(`/notes/${id}`, {
+    headers: {
+      Authorization: `Bearer ${store.userToken}`
+    }
+  })
+  return res.data
+}
+
 export default {
   signup,
   login,
@@ -113,5 +124,6 @@ export default {
   getAllClients,
   getAllAppointments,
   getAllPendingOneClient,
-  getAllNotes
+  getAllNotes,
+  getAllNotesOneClient
 }

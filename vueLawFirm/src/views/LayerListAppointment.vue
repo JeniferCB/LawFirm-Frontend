@@ -60,7 +60,7 @@ export default {
                     this.$router.push({ name: 'listnotes' })
                     break;
                 case "noteClient":
-                    console.log("noteClient");
+                    this.$router.push({ name: 'listnoteclient' })
                     break;
                 default:
                     break;

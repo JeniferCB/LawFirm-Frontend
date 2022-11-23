@@ -31,10 +31,10 @@
                 <div class="tarjeta">
                     <div class="card" v-for="(appo, idx) in appointments" :key="idx">
                         <div class="card-body">
-                            <h5 class="card-title">{{  appo.date  }} {{  appo.hour  }}</h5>
-                            <p>{{  appo.modality  }}</p>
-                            <p>{{  appo.ambit  }}</p>
-                            <p class="card-text">{{  appo.message  }}</p>
+                            <h5 class="card-title">{{ appo.date }} {{ appo.hour }}</h5>
+                            <p>{{ appo.modality }}</p>
+                            <p>{{ appo.ambit }}</p>
+                            <p class="card-text">{{ appo.message }}</p>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@ export default {
                     this.$router.push({ name: 'listnotes' })
                     break;
                 case "noteClient":
-                    console.log("noteClient");
+                    this.$router.push({ name: 'listnoteclient' })
                     break;
                 default:
                     break;

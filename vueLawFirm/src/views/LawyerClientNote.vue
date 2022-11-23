@@ -23,15 +23,7 @@
             </button>
         </div>
         <div class="bodymenu">
-            <div class="tarjeta">
-                <div class="card" v-for="(note, idx) in notes" :key="idx">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ note.day }}</h5>
-                        <p class="card-text">{{ note.text }}</p>
-                        <h5>{{ nameClient(note.client) }}</h5>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </template>
@@ -41,8 +33,7 @@ import API from '../services/api'
 export default {
     data() {
         return {
-            notes: [],
-            users: [],
+            dni: ""
         }
     },
     methods: {
@@ -66,19 +57,14 @@ export default {
                 default:
                     break;
             }
+
         },
-        nameClient(id) {
-            let res2 = this.users.filter((e => e._id === id));
-            return res2[0].name + " " + res2[0].lastname
+        async getOneClient() {
+            let res = await API.getUsers()
+            let res2 = res.data.filter((u) => u.role !== "admin").filter((e => e.dni === this.dni));
+            this.notes = await API.getAllNotesOneClient(res2[0]._id)
         }
     },
-    async mounted() {
-        const data = await API.getAllNotes();
-        const res = await API.getUsers()
-        this.notes = data;
-        this.users = res.data
-        console.log(this.users);
-    }
 
 
 }
