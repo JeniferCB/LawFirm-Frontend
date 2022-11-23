@@ -43,7 +43,7 @@ export default {
         this.store.login(response.token, response.email, response.rol, response.id)
 
         if (this.store.isAdmin) {
-          this.$router.push({ name: 'menu' })
+          this.$router.push({ name: 'listclient' })
         } else {
           this.$router.push('appointments')
         }

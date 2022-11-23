@@ -65,6 +65,34 @@ async function getUsers() {
   })
   return res
 }
+async function getAllClients() {
+  const store = useAuthStore()
+  const res = await API.get('/users/clients', {
+    headers: {
+      Authorization: `Bearer ${store.userToken}`
+    }
+  })
+  return res.data
+}
+async function getAllAppointments(){
+  const store = useAuthStore()
+  const res = await API.get('/appointments', {
+    headers: {
+      Authorization: `Bearer ${store.userToken}`
+    }
+  })
+  return res.data
+}
+async function getAllPendingOneClient(id){
+  const store = useAuthStore()
+  const res = await API.get(`/appointments/${id}`, {
+    headers: {
+      Authorization: `Bearer ${store.userToken}`
+    }
+  })
+  return res.data
+
+}
 
 export default {
   signup,
@@ -72,5 +100,8 @@ export default {
   getAllPendingAppointments,
   getUsers,
   addAppointment,
-  deleteAppointment
+  deleteAppointment,
+  getAllClients,
+  getAllAppointments,
+  getAllPendingOneClient
 }

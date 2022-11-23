@@ -46,7 +46,7 @@
       </select>
       <label> MESSAGE </label>
       <textarea rows="10" cols="50" v-model="list.message"> </textarea>
-      <button class="btn btn-dark" @click.prevent="addAppointment()">
+      <button class="btn btn-dark" @click.prevent="addappoint()">
         ADD APPOINTMENT
       </button>
     </div>
@@ -76,6 +76,7 @@ export default {
     const data = await API.getAllPendingAppointments();
     this.appointments = data;
   },
+  
   async beforeMount() {
     const res = await API.getUsers();
     // Seleccionamos los ids de los usuarios que no tengan role 'user'
@@ -85,7 +86,7 @@ export default {
     this.list.lawyer = this.user[ran];
   },
   methods: {
-    async addAppointment() {
+    async addappoint() {
       await API.addAppointment(this.list);
       this.appointments = await API.getAllPendingAppointments();
     },
