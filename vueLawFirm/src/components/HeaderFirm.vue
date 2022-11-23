@@ -5,7 +5,7 @@
 
 <template>
     <div class="navigation">
-        <h3 class="title1">LawFirm</h3>
+        <img class="icon" src="../assets/iconjusticiablanco.png">
         <nav v-if="!token">
             <RouterLink class="btn btn-primary" to="login">Login</RouterLink> 
             <span class="testlog"> | </span> 
@@ -79,5 +79,10 @@ export default {
 }
 nav {
     margin-right: 1%;
+}
+.icon{
+    height: 100%;
+    width: 4.5%;
+    margin-left: 1%;
 }
 </style>

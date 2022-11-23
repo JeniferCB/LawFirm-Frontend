@@ -3,6 +3,7 @@ import LoginView from '../views/LoginView.vue'
 import SignupView from '../views/SignupView.vue'
 import HomeView from '../views/HomeView.vue'
 import ClientAppointments from '../views/ClientAppointments.vue'
+import LawyerMenu from '../views/LawyerMenu.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,14 @@ const router = createRouter({
       path:'/appointments',
       name:'appointments',
       component: ClientAppointments,
+      meta:{
+        requiresAuth: true
+      }
+    },
+    {
+      path:'/menu',
+      name:'menu',
+      component:LawyerMenu,
       meta:{
         requiresAuth: true
       }
