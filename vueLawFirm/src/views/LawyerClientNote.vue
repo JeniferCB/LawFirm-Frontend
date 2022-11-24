@@ -25,8 +25,8 @@
         <div class="formato">
             <div class="bodymenu">
                 <div class="barsearch">
-                    <input type="text" v-model="dni" @keydown.prevent.enter="getOneClient">
-                    <button @click.prevent="getOneClient">Search</button>
+                    <input class="search" type="text" v-model="dni" @keydown.prevent.enter="getOneClient">
+                    <button class="btn btn-primary sea" @click.prevent="getOneClient">Search</button>
                 </div>
                 <div v-for="(note, idx) in notes" :key="idx" class="card" style="max-width: 18rem;">
                     <div class="card-header bg-transparent border-success">{{ note.day }}</div>
@@ -111,6 +111,7 @@ export default {
     height: 100%;
     width: 100%;
     margin: 0;
+    background: radial-gradient(ellipse,rgb(198, 212, 225) 0%,rgb(108, 144, 174) )
 }
 
 .bar {
@@ -201,5 +202,13 @@ export default {
 
 .card-body {
     color: black !important;
+}
+
+.sea{
+    background-color: rgb(81, 133, 175);
+    height: 80%;
+}
+.search{
+    margin-top: 1%;
 }
 </style>

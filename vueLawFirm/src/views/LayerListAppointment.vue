@@ -80,6 +80,7 @@ export default {
     height: 100%;
     width: 100%;
     margin: 0;
+    background: radial-gradient(ellipse,rgb(198, 212, 225) 0%,rgb(108, 144, 174) )
 }
 
 .bar {
@@ -99,6 +100,7 @@ export default {
     flex-wrap: wrap;
     margin: 1%;
     justify-content: center;
+    overflow-y: scroll;
 
 }
 

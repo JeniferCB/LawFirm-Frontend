@@ -121,7 +121,7 @@ export default {
 .card {
   height: calc(40% + 1vw) ;
   margin: 1%;
-  font-size: calc(9px + 1vw);
+  font-size: calc(7px + 1vw);
   border: 2px solid black !important;
   border-radius: 20px;
 }

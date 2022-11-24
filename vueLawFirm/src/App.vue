@@ -29,7 +29,6 @@ export default {
 }
 
 .body {
-  overflow-y: scroll;
   height: 92%;
 }
 </style>

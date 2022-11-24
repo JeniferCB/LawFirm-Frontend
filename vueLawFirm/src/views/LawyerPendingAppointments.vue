@@ -25,8 +25,8 @@
         <div class="bodymenu">
             <div class="page">
                 <div class="buscador">
-                    <input type="text" v-model="dni" @keydown.prevent.enter="getOneClient">
-                    <button @click.prevent="getOneClient">Search</button>
+                    <input class="search" type="text" v-model="dni" @keydown.prevent.enter="getOneClient">
+                    <button @click.prevent="getOneClient" class="btn btn-primary sea">Search</button>
                 </div>
                 <div class="tarjeta">
                     <div v-for="(appo, idx) in appointments" :key="idx" class="card"
@@ -92,6 +92,7 @@ export default {
     height: 100%;
     width: 100%;
     margin: 0;
+    background: radial-gradient(ellipse,rgb(198, 212, 225) 0%,rgb(108, 144, 174) )
 }
 
 .bar {
@@ -110,6 +111,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     margin: 1%;
+    overflow-y: scroll;
 }
 
 .bar button {
@@ -162,5 +164,9 @@ export default {
 
 .card-body {
     color: black !important;
+}
+.sea{
+    background-color: rgb(81, 133, 175);
+    margin-left: 1%;
 }
 </style>
