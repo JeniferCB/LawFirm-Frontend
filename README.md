@@ -5,91 +5,43 @@ Implementamos una interfaz de usuario que recoge las citas y las notas de los cl
 
 ![](./image.png)
 
+Nuestra interfaz parte desde la pantalla Home en la cuál si somos clientes podremos registrarnos y en caso de ser abogado o cliente registrado podremos iniciar sesión.
 
-### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+Dependiendo del rol (cliente u abogado) podrá acceder a unas vistas u otras:
 
-_Dí cómo será ese paso_
+**Rol cliente🙋‍♀️🙋‍♂️
 
-```
-Da un ejemplo
-```
+Se conoce que la sesión está inciada porque puede visualizarse en el margen superior derecho la bienvenida con el email del cliente que inicia la sesión.
 
-_Y repite_
+Accederá a la pantalla principal en la cual podrá ver sus citas pendientes o crear una nueva cita en caso de que lo necesite.
 
-```
-hasta finalizar
-```
+_Crear nueva cita:_ Tendremos los apartados requeridos (fecha; hora; ámbito; ...)
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+Para cerrar la sesión deberá presionar el botón <logout>.
+  
 
-## Ejecutando las pruebas ⚙️
+**Rol abogado👨‍💼👩‍💼
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+Se conoce que la sesión está inciada porque puede visualizarse en el margen superior derecho la bienvenida con el email del cliente que inicia la sesión.
+  
+Accederá a la pantalla principal en la cual se muestra una barra de navegación con las acciones que puede realizar.
 
-### Analice las pruebas end-to-end 🔩
+_Clientes:_ Ver todos los clientes que tiene ese abogado.
 
-_Explica que verifican estas pruebas y por qué_
+_Citas:_ Ver todas las citas que tiene ese abogado.
 
-```
-Da un ejemplo
-```
+_Citas pendientes:_ Ver todas las citas pendientes que tiene ese abogado (filtrando por DNI del cliente).
 
-### Y las pruebas de estilo de codificación ⌨️
+_Notas:_ Ver todas las notas que tiene ese abogado.
 
-_Explica que verifican estas pruebas y por qué_
+_Notas de un cliente:_ Ver todas las notas de un cliente concreto que tiene ese abogado (filtrando por DNI del cliente) así como crear notas nuevas o eliminarlas.
 
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
-## Construido con 🛠️
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
+Para cerrar la sesión deberá presionar el botón <logout>.
+  
+  
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* Dona con cripto a esta dirección: `0xf253fc233333078436d111175e5a76a649890000`
-* etc.
-
-
-
----
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+* **Jenifer Cabrera Betancor** - [JeniferCB](https://github.com/JeniferCB)
+* **Nicolás Nahuel Faisca Silva** - [NickNahuel23](https://github.com/NickNahuel23)
+* **Alejandro José Cruz Santiago** - [AlxMen](https://github.com/AlxMen)
