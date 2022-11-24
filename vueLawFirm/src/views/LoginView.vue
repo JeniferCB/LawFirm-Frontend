@@ -60,15 +60,19 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(90deg, rgba(114, 159, 196) 0%, rgb(30, 59, 84));
+  font-size: calc(18px + 1vh);
+  font-weight: bold;
 }
 
 .login {
-  border: 3px solid black;
-  height: calc(40% + 1vh);
-  width: calc(60% + 1vw);
+  border: 2px solid rgb(10, 42, 72);
+  height: calc(34% + 1vh);
+  width: calc(55% + 1vw);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background:rgb(143, 182, 214)
 }
 
 label {

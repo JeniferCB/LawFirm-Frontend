@@ -41,26 +41,20 @@ export default {
   align-items: center;
 }
 
-.title1 {
-  font-size: calc(20px + 1vh);
 
-  font-style: normal;
-  font-weight: bold;
-  color: rgb(248, 247, 245);
-  padding-left: 7px;
-
-}
 
 .btn-primary {
   height: calc(80% + 1vh) !important;
   text-align: center;
-  background-color: rgb(15, 65, 112);
+  background-color: rgb(12, 52, 90);
   color: lightcyan;
+  border-color:lightcyan ;
+  font-size: calc(11px + 1vh)
 }
 
 .testlog {
   color: lightcyan;
-
+  font-size: calc(11px + 1vh)
 }
 
 nav {
@@ -69,7 +63,7 @@ nav {
 
 .icon {
   height: 100%;
-  width: calc(100px + 1vw);
+  width: calc(250px + 1vw);
   margin-left: 1%;
 }
 </style>
