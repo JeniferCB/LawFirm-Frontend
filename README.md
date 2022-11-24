@@ -3,7 +3,7 @@
 Implementamos una interfaz de usuario que recoge las citas y las notas de los clientes para un despacho de abogados. Interfaz intuitiva y cómoda.
 
 ```
-
+![](./image.png)
 ```
 
 ### Instalación 🔧
