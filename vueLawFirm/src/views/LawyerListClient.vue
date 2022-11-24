@@ -17,7 +17,7 @@
         <i class="fi fi-rr-notebook"></i>
         <span>Notes</span>
       </button>
-      <button @click.prevent="navAdmin('Clientnote')">
+      <button @click.prevent="navAdmin('noteClient')">
         <i class="fi fi-rr-apps-add"></i>
         <span>Client Note</span>
       </button>
@@ -119,9 +119,18 @@ export default {
 }
 
 .card {
-  height: calc(35% + 1vh);
+  height: calc(40% + 1vw) ;
   margin: 1%;
-  font-size: calc(5px + 1vw);
- 
+  font-size: calc(9px + 1vw);
+  border: 2px solid black !important;
+  border-radius: 20px;
+}
+.card-header{
+  background-color: rgb(86, 136, 178) !important;
+  border-radius: 17px 17px 0px 0px; 
+  color: aliceblue;
+}
+.card-body{
+  color: black !important;
 }
 </style>

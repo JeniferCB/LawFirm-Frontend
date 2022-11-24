@@ -114,6 +114,30 @@ async function getAllNotesOneClient(id) {
   return res.data
 }
 
+async function deleteNotes(id) {
+  const store = useAuthStore()
+  const res = await API.delete(`/notes/${id}`, {
+    headers: {
+      Authorization: `Bearer ${store.userToken}`
+    }
+  })
+  return res
+}
+
+async function addNote(note) {
+  const store = useAuthStore()
+  const res = await API.post('/notes', {
+    lawyer: store.userId,
+    ...note
+  }, {
+    headers: {
+      Authorization: `Bearer ${store.userToken}`
+    }
+  })
+  return res
+}
+
+
 export default {
   signup,
   login,
@@ -125,5 +149,7 @@ export default {
   getAllAppointments,
   getAllPendingOneClient,
   getAllNotes,
-  getAllNotesOneClient
+  getAllNotesOneClient,
+  deleteNotes,
+  addNote
 }

@@ -17,7 +17,7 @@
                 <i class="fi fi-rr-notebook"></i>
                 <span>Notes</span>
             </button>
-            <button @click.prevent="navAdmin('Clientnote')">
+            <button @click.prevent="navAdmin('noteClient')">
                 <i class="fi fi-rr-apps-add"></i>
                 <span>Client Note</span>
             </button>
@@ -29,11 +29,12 @@
                     <button @click.prevent="getOneClient">Search</button>
                 </div>
                 <div class="tarjeta">
-                    <div class="card" v-for="(appo, idx) in appointments" :key="idx">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ appo.date }} {{ appo.hour }}</h5>
-                            <p>{{ appo.modality }}</p>
-                            <p>{{ appo.ambit }}</p>
+                    <div v-for="(appo, idx) in appointments" :key="idx" class="card"
+                        style="max-width: 18rem;">
+                        <div class="card-header bg-transparent border-success">{{ appo.date }} {{ appo.hour }}</div>
+                        <div class="card-body text-success">
+                            <h5 class="card-title">{{ appo.modality }}</h5>
+                            <p class="card-text">{{ appo.ambit }}</p>
                             <p class="card-text">{{ appo.message }}</p>
                         </div>
                     </div>
@@ -95,7 +96,8 @@ export default {
 
 .bar {
     width: 100%;
-    height: 5%;
+    height: 6%;
+    font-size: calc(17px + 1vh)
 }
 
 .bodymenu {
@@ -112,16 +114,13 @@ export default {
 
 .bar button {
     width: 20%;
-    background-color: rgb(74, 156, 156);
+    background-color: rgb(143, 182, 214);
     border: none;
+
 }
 
 .bar button:hover {
-    background-color: rgb(54, 109, 109);
-}
-
-.foc:target {
-    background-color: rgb(54, 109, 109);
+    background-color: rgb(86, 136, 178);
 }
 
 .bar span {
@@ -148,12 +147,20 @@ export default {
 }
 
 .card {
+    max-width: 100% !important;
     margin: 1%;
-    border: 2px solid black;
-    border-radius: 15px;
+    font-size: calc(9px + 1vw);
+    border: 2px solid black !important;
+    border-radius: 20px;
 }
 
-.card p {
-    background-color: rgb(206, 202, 202);
+.card-header {
+    background-color: rgb(86, 136, 178) !important;
+    border-radius: 17px 17px 0px 0px;
+    color: aliceblue;
+}
+
+.card-body {
+    color: black !important;
 }
 </style>

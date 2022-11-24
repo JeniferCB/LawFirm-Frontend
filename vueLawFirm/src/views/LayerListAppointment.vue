@@ -17,16 +17,17 @@
                 <i class="fi fi-rr-notebook"></i>
                 <span>Notes</span>
             </button>
-            <button @click.prevent="navAdmin('Clientnote')">
+            <button @click.prevent="navAdmin('noteClient')">
                 <i class="fi fi-rr-apps-add"></i>
                 <span>Client Note</span>
             </button>
         </div>
         <div class="bodymenu">
-            <div v-for="(appo, idx) in appointments" :key="idx" class="card" style="width: 18rem">
-                <div class="card-body">
-                    <h5 class="card-title">{{ appo.date }} {{ appo.hour }}</h5>
-                    <h5>{{ appo.modality }}</h5>
+            <div v-for="(appo, idx) in appointments" :key="idx" class="card border-success mb-3"
+                style="max-width: 18rem;">
+                <div class="card-header bg-transparent border-success">{{ appo.date }} {{ appo.hour }}</div>
+                <div class="card-body text-success">
+                    <h5 class="card-title">{{ appo.modality }}</h5>
                     <p class="card-text">{{ appo.message }}</p>
                 </div>
             </div>
@@ -84,6 +85,7 @@ export default {
 .bar {
     width: 100%;
     height: 6%;
+    font-size: calc(17px + 1vh)
 }
 
 .bodymenu {
@@ -102,20 +104,33 @@ export default {
 
 .bar button {
     width: 20%;
-    background-color: rgb(74, 156, 156);
+    background-color: rgb(143, 182, 214);
     border: none;
+
 }
 
 .bar button:hover {
-    background-color: rgb(54, 109, 109);
+    background-color: rgb(86, 136, 178);
+}
+
+.bar span {
+    margin-left: 4%;
+    font-size: calc(5px + 1vw);
 }
 
 .card {
-    margin: 1%;
-    border: 2px solid;
-    border-radius: 30%;
-
-
+  margin: 1%;
+  font-size: calc(9px + 1vw);
+  border: 2px solid black !important;
+  border-radius: 20px;
+}
+.card-header{
+  background-color: rgb(86, 136, 178) !important;
+  border-radius: 17px 17px 0px 0px; 
+  color: aliceblue;
+}
+.card-body{
+  color: black !important;
 }
 
 .bar span {

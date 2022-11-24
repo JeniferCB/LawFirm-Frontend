@@ -17,13 +17,31 @@
                 <i class="fi fi-rr-notebook"></i>
                 <span>Notes</span>
             </button>
-            <button @click.prevent="navAdmin('Clientnote')">
+            <button @click.prevent="navAdmin('noteClient')">
                 <i class="fi fi-rr-apps-add"></i>
                 <span>Client Note</span>
             </button>
         </div>
-        <div class="bodymenu">
-
+        <div class="formato">
+            <div class="bodymenu">
+                <div class="barsearch">
+                    <input type="text" v-model="dni" @keydown.prevent.enter="getOneClient">
+                    <button @click.prevent="getOneClient">Search</button>
+                </div>
+                <div v-for="(note, idx) in notes" :key="idx" class="card" style="max-width: 18rem;">
+                    <div class="card-header bg-transparent border-success">{{ note.day }}</div>
+                    <div class="card-body text-success">
+                        <p class="card-text">{{ note.text }}</p>
+                        <div class="conbuttom">
+                            <a href="#" class="btn btn-danger" @click.prevent="delNote(note._id)">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container2">
+                <textarea class="textoformat" rows="10" cols="50" v-model="newNote.text"> </textarea>
+                <button class="btn btn-dark" @click.prevent="addNotes"> ADD NOTE </button>
+            </div>
         </div>
     </div>
 </template>
@@ -33,7 +51,12 @@ import API from '../services/api'
 export default {
     data() {
         return {
-            dni: ""
+            dni: "",
+            notes: [],
+            newNote: {
+                text: '',
+                client: '',
+            }
         }
     },
     methods: {
@@ -63,11 +86,24 @@ export default {
             let res = await API.getUsers()
             let res2 = res.data.filter((u) => u.role !== "admin").filter((e => e.dni === this.dni));
             this.notes = await API.getAllNotesOneClient(res2[0]._id)
+            this.newNote.client = res2[0]._id
+        },
+        async delNote(id) {
+            await API.deleteNotes(id);
+            let res = await API.getUsers()
+            let res2 = res.data.filter((u) => u.role !== "admin").filter((e => e.dni === this.dni));
+            this.notes = await API.getAllNotesOneClient(res2[0]._id);
+        },
+        async addNotes() {
+            await API.addNote(this.newNote)
+            let res = await API.getUsers()
+            let res2 = res.data.filter((u) => u.role !== "admin").filter((e => e.dni === this.dni));
+            this.notes = await API.getAllNotesOneClient(res2[0]._id);
         }
-    },
 
-
+    }
 }
+
 </script>
 
 <style scoped>
@@ -78,36 +114,92 @@ export default {
 }
 
 .bar {
-    width: 100%;
-    height: 5%;
-
+  width: 100%;
+  height: 7%;
+  font-size: calc(17px + 1vh)
 }
 
 .bodymenu {
-    width: 99%;
-    height: 92%;
+    overflow-y: scroll;
+    width: 80%;
+    height: 100%;
     background-image: url(../assets/justicia.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 50%;
     display: flex;
     flex-wrap: wrap;
-    margin: 1%;
+    justify-content: center;
+
 
 }
 
 .bar button {
-    width: 20%;
-    background-color: rgb(74, 156, 156);
-    border: none;
+  width: 20%;
+  background-color: rgb(143, 182, 214);
+  border: none;
+  
 }
-
 .bar button:hover {
-    background-color: rgb(54, 109, 109);
+  background-color: rgb(86, 136, 178);
 }
 
 .bar span {
-    margin-left: 4%;
-    font-size: calc(5px + 1vw);
+  margin-left: 4%;
+  font-size: calc(5px + 1vw);
+}
+
+.btn {
+    margin: 1%;
+}
+.conbuttom {
+    display: flex;
+    justify-content: end;
+}
+
+.barsearch {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 8%;
+}
+
+.formato {
+    display: flex;
+    height: 93%;
+}
+
+.container2 {
+    width: 40%;
+    height: 100%;
+    background-color: rgb(51, 78, 103);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.textoformat {
+    width: 98%;
+    height: 80%;
+    margin: 1%;
+    margin-top: 5%;
+    resize: none;
+}
+.card {
+    max-width: 100% !important;
+    margin: 1%;
+    font-size: calc(9px + 1vw);
+    border: 2px solid black !important;
+    border-radius: 20px;
+}
+
+.card-header {
+    background-color: rgb(86, 136, 178) !important;
+    border-radius: 17px 17px 0px 0px;
+    color: aliceblue;
+}
+
+.card-body {
+    color: black !important;
 }
 </style>

@@ -17,18 +17,18 @@
                 <i class="fi fi-rr-notebook"></i>
                 <span>Notes</span>
             </button>
-            <button @click.prevent="navAdmin('Clientnote')">
+            <button @click.prevent="navAdmin('noteClient')">
                 <i class="fi fi-rr-apps-add"></i>
                 <span>Client Note</span>
             </button>
         </div>
         <div class="bodymenu">
             <div class="tarjeta">
-                <div class="card" v-for="(note, idx) in notes" :key="idx">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ note.day }}</h5>
+                <div v-for="(note, idx) in notes" :key="idx" class="card" style="max-width: 18rem;">
+                    <div class="card-header bg-transparent border-success">{{ note.day }}</div>
+                    <div class="card-body text-success">
+                        <h5 class="card-title">{{ nameClient(note.client) }}</h5>
                         <p class="card-text">{{ note.text }}</p>
-                        <h5>{{ nameClient(note.client) }}</h5>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,6 @@ export default {
         const res = await API.getUsers()
         this.notes = data;
         this.users = res.data
-        console.log(this.users);
     }
 
 
@@ -93,8 +92,8 @@ export default {
 
 .bar {
     width: 100%;
-    height: 5%;
-
+    height: 6%;
+    font-size: calc(17px + 1vh)
 }
 
 .bodymenu {
@@ -112,16 +111,35 @@ export default {
 
 .bar button {
     width: 20%;
-    background-color: rgb(74, 156, 156);
+    background-color: rgb(143, 182, 214);
     border: none;
+
 }
 
 .bar button:hover {
-    background-color: rgb(54, 109, 109);
+    background-color: rgb(86, 136, 178);
 }
 
 .bar span {
     margin-left: 4%;
     font-size: calc(5px + 1vw);
+}
+
+.card {
+    max-width: 100% !important;
+    margin: 1%;
+    font-size: calc(9px + 1vw);
+    border: 2px solid black !important;
+    border-radius: 20px;
+}
+
+.card-header {
+    background-color: rgb(86, 136, 178) !important;
+    border-radius: 17px 17px 0px 0px;
+    color: aliceblue;
+}
+
+.card-body {
+    color: black !important;
 }
 </style>

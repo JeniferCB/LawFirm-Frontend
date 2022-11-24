@@ -63,7 +63,14 @@ nav {
 
 .icon {
   height: 100%;
-  width: calc(250px + 1vw);
+  width: 13%;
   margin-left: 1%;
 }
+
+@media (max-width: 500px){
+  .icon{
+    width: 100px;
+  }
+}
+
 </style>
