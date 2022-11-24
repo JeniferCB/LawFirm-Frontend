@@ -22,5 +22,7 @@ export default {
     align-items: center;
     height: 100%;
     width: 100%;
+    /*background:rgb(114, 159, 196);*/
+    background: linear-gradient(90deg, rgba(114, 159, 196) 0%, rgb(30, 59, 84));
 }
 </style>

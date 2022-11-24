@@ -1,19 +1,12 @@
 <template>
   <div class="format">
     <div class="container1">
-      <div
-        v-for="(appo, idx) in appointments"
-        :key="idx"
-        class="card"
-        style="width: 18rem"
-      >
+      <div v-for="(appo, idx) in appointments" :key="idx" class="card" style="width: 18rem">
         <div class="card-body">
           <h5 class="card-title">{{ appo.date }} {{ appo.hour }}</h5>
           <h5>{{ appo.modality }}</h5>
           <p class="card-text">{{ appo.message }}</p>
-          <a href="#" class="btn btn-danger" @click.prevent="delAppointment(appo._id)"
-            >Cancel</a
-          >
+          <a href="#" class="btn btn-danger" @click.prevent="delAppointment(appo._id)">Cancel</a>
         </div>
       </div>
     </div>
@@ -76,7 +69,7 @@ export default {
     const data = await API.getAllPendingAppointments();
     this.appointments = data;
   },
-  
+
   async beforeMount() {
     const res = await API.getUsers();
     // Seleccionamos los ids de los usuarios que no tengan role 'user'
@@ -103,6 +96,7 @@ export default {
   font-size: calc(5px + 1vw);
   height: 100%;
   width: 100%;
+  background: linear-gradient(90deg, rgb(124, 173, 213) 0%, rgb(161, 178, 192));
 }
 
 .format label {
@@ -117,12 +111,14 @@ export default {
   overflow-y: scroll;
   height: 100%;
   width: 70%;
-  border: 2px solid black;
+  border: 2px solid rgb(10, 42, 72);
+  
 }
 
 .container2 {
   color: aliceblue;
-  background-color: rgb(23, 92, 156);
+  /*background-color: rgb(15, 65, 112);*/
+  background-color: rgb(51, 78, 103);
   height: 100%;
   width: 30%;
   padding: 1%;
@@ -138,9 +134,11 @@ textarea {
 }
 
 .card {
-  border: 2px solid black;
+  border: 2px solid rgb(10, 42, 72);
   width: 98% !important;
   margin: 1%;
+  background-color: rgb(233, 243, 252);
+
 }
 
 .btn-dark {

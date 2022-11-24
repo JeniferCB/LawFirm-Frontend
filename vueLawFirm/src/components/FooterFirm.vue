@@ -15,8 +15,9 @@ export default {
     background-color: rgb(10, 42, 72);
     color: rgb(248, 247, 245);
     height: 5%;
-    font-size: 15px;
+    font-size: calc(5px + 1vh);
     font-weight: normal;
     text-align: center;
+    padding-top: 10px;
 }
 </style>

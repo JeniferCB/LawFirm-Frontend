@@ -79,11 +79,14 @@ export default {
   height: 100%;
   width: 100%;
   margin: 0;
+  /*background: linear-gradient(90deg, rgba(114, 159, 196) 0%, rgb(30, 59, 84));*/
+  background: radial-gradient(ellipse,rgb(198, 212, 225) 0%,rgb(108, 144, 174) )
 }
 
 .bar {
   width: 100%;
   height: 6%;
+  font-size: calc(17px + 1vh)
 }
 
 .bodymenu {
@@ -101,12 +104,13 @@ export default {
 
 .bar button {
   width: 20%;
-  background-color: rgb(74, 156, 156);
+  background-color: rgb(143, 182, 214);
   border: none;
+  
 }
 
 .bar button:hover {
-  background-color: rgb(54, 109, 109);
+  background-color: rgb(86, 136, 178);
 }
 
 .bar span {
@@ -118,5 +122,6 @@ export default {
   height: calc(35% + 1vh);
   margin: 1%;
   font-size: calc(5px + 1vw);
+ 
 }
 </style>
