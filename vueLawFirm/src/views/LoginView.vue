@@ -68,11 +68,16 @@ export default {
 .login {
   border: 2px solid rgb(10, 42, 72);
   height: calc(34% + 1vh);
-  width: calc(55% + 1vw);
+  width: calc(50% + 1vw);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   background:rgb(143, 182, 214)
+}
+
+.login div{
+  display: flex;
+  justify-content: space-around;
 }
 
 label {
@@ -85,8 +90,7 @@ label {
 }
 
 .pass {
-  margin-left: 2.5%;
-  width: 50%;
+  width: 70%;
 }
 
 .btn-dark {

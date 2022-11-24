@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        &copy; LawFirm. SL
+        &copy;  LawFirm. SL
     </div>
 </template>
 
@@ -18,6 +18,9 @@ export default {
     font-size: calc(5px + 1vh);
     font-weight: normal;
     text-align: center;
-    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 </style>

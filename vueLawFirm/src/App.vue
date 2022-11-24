@@ -26,6 +26,7 @@ export default {
 .app {
   height: 95vh;
   font-size: calc(10px + 1vw);
+
 }
 
 .body {

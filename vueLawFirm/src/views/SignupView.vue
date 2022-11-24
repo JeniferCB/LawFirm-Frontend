@@ -72,6 +72,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(90deg, rgba(114, 159, 196) 0%, rgb(30, 59, 84));
 }
 
 .form {
@@ -79,8 +80,13 @@ export default {
   flex-direction: column;
   height: calc(90% + 1vh);
   width: calc(60% + 1vw);
-  border: 3px solid black;
+  border: 3px solid rgb(10, 42, 72);
   justify-content: space-around;
+  background:rgb(143, 182, 214);
+}
+
+.form label{
+  font-weight: bold;
 }
 
 .form div {

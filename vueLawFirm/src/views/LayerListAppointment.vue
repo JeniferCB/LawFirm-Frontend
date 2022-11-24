@@ -123,7 +123,7 @@ export default {
 .card {
   margin: 1%;
   font-size: calc(9px + 1vw);
-  border: 2px solid black !important;
+  border: 2px solid rgb(10, 42, 72) !important;
   border-radius: 20px;
 }
 .card-header{
