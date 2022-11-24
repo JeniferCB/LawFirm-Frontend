@@ -91,13 +91,13 @@ export default {
         async delNote(id) {
             await API.deleteNotes(id);
             let res = await API.getUsers()
-            let res2 = res.data.filter((u) => u.role !== "admin").filter((e => e.dni === this.dni));
+            let res2 = res.data.filter((e => e.dni === this.dni));
             this.notes = await API.getAllNotesOneClient(res2[0]._id);
         },
         async addNotes() {
             await API.addNote(this.newNote)
             let res = await API.getUsers()
-            let res2 = res.data.filter((u) => u.role !== "admin").filter((e => e.dni === this.dni));
+            let res2 = res.data.filter((e => e.dni === this.dni));
             this.notes = await API.getAllNotesOneClient(res2[0]._id);
         }
 
